@@ -1,0 +1,32 @@
+﻿<div class="weather-container">
+    <div class="weather-table">
+        <Table>
+            <Header>
+                <HeaderColumn HeaderName="Date" />
+                <HeaderColumn HeaderName="Temp (C)" />
+                <HeaderColumn HeaderName="Temp (C)" />
+                <HeaderColumn HeaderName="Summary" />
+            </Header>
+            <Body>
+                <Virtualize ItemsProvider="this.LoadForecast" ItemSize="this.ItemHeight">
+                    <ItemContent>
+                        <DataRow Key="@context.GetHashCode().ToString()" Style="@this.ItemStyle">
+                            <DataColumn TItem="String" Item="context.Date.ToShortDateString()" />
+                            <DataColumn TItem="int" Item="context.TemperatureC" />
+                            <DataColumn TItem="int" Item="context.TemperatureF" />
+                            <DataColumn TItem="String" Item="context.Summary" />
+                        </DataRow>
+                    </ItemContent>
+                    <Placeholder>
+                        <DataRow Style="@this.ItemStyle">
+                            <DataColumn TItem="string" Item="this.CellLoadingText"></DataColumn>
+                            <DataColumn TItem="string" Item="this.CellLoadingText"></DataColumn>
+                            <DataColumn TItem="string" Item="this.CellLoadingText"></DataColumn>
+                            <DataColumn TItem="string" Item="this.CellLoadingText"></DataColumn>
+                        </DataRow>
+                    </Placeholder>
+                </Virtualize>
+            </Body>
+        </Table>
+    </div>
+</div>
